@@ -4,10 +4,12 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import OurProjectsPage from "./pages/OurProjectsPage";
 import ContactPage from "./pages/ContactPage";
+import Header from "./components/homepage/heroSection/Header";
 
 const App = () => {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
 
