@@ -2,6 +2,7 @@ import Header from "../components/homepage/heroSection/Header";
 import FloatingContainer from "../components/homepage/heroSection/FloatingContainer";
 import backgroundImage from "../assets/background.png";
 import OurServices from "../components/homepage/ourServices/OurServices";
+import Footer from "../components/layouts/Footer";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
            <FloatingContainer />
         </div>
         <OurServices />
+        <Footer />
     </div>
   );
 };
