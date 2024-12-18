@@ -23,8 +23,8 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="relative z-20 flex justify-between items-center p-4 text-white">
-      <img src={logo} alt="AutoSoft Logo" className="h-12 w-auto" />
+    <header className="absolute w-full z-20 flex justify-between items-center p-4 text-white">
+      <Link to="/"><img src={logo} alt="AutoSoft Logo" className="h-12 w-auto" /></Link>
 
       {/* Navigation Links - Hidden on small screens */}
       <nav className="hidden md:block">
