@@ -16,7 +16,6 @@ const HomePage = () => {
            <FloatingContainer />
         </div>
         <OurServices />
-        <Footer />
     </div>
   );
 };
