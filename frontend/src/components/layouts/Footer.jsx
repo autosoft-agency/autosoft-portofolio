@@ -4,36 +4,35 @@ import logo from "../../assets/logo.png";
 import MaskGroup from "../../assets/Mask-group.png"
 import { Link } from "react-router-dom";
 
+export const contacts = [
+  {text: "+201157232513", icon: FaPhoneAlt},
+  {text: "autosoft.agency@gmail.com", icon: MdEmail},
+  {text: "Alexandria, Egypt", icon: MdLocationOn},
+]
 const Footer = () => {
   return (
-    <footer className="relative bg-[#001159] text-white overflow-hidden">
+    <footer className="relative isolate bg-[#001159] text-white overflow-hidden">
       {/* Background Shapes */}
       {/* <div className="absolute top-0 left-0 w-1/4 h-full bg-blue-800 rounded-r-full opacity-30 pointer-events-none"></div> */}
       {/* <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-700 rounded-l-full opacity-30 pointer-events-none"></div> */}
 
-      <div 
-           className="absolute bg-cover bg-center w-full h-full" 
-           style={{ backgroundImage:` url(${MaskGroup}) `}}
+      <div
+        className="absolute bg-cover -z-10 bg-center w-full h-full"
+        style={{ backgroundImage: `url(${MaskGroup})` }}
       >
-           <div className="absolute inset-0 pointer-events-none"></div>  
+        <div className="absolute inset-0 pointer-events-none"></div>
       </div>
 
       {/* Container with 70% width */}
-      <div className="w-[70%] mx-auto py-12">
+      <div className="max-w-[900px] w-full mx-auto py-12 px-4">
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center pb-4 border-b border-blue-400">
-          <div className="flex items-center gap-2">
-            <FaPhoneAlt />
-            <span className="text-sm">+201157232513</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <MdEmail />
-            <span className="text-sm">autosoft.agency@gmail.com</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <MdLocationOn />
-            <span className="text-sm">Alexandria, Egypt</span>
-          </div>
+        <div className="flex flex-col sm:flex-row sm:gap-12 gap-3 justify-center items-center pb-4 border-b border-blue-400">
+            {contacts.map((contact, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <contact.icon size={20} />
+                <p className="text-sm">{contact.text}</p>
+              </div>
+            ))}
         </div>
 
         {/* Main Footer Section */}
@@ -66,25 +65,25 @@ const Footer = () => {
               <h3 className="font-semibold text-lg mb-4">PAGES</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-            <Link to="/about" className="hover:text-orange-300">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to="/services" className="hover:text-orange-300">
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link to="/portfolio" className="hover:text-orange-300">
-              Our Projects
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact" className="hover:text-orange-300">
-              Contact
-            </Link>
-          </li>
+                  <Link to="/about" className="hover:text-orange-300">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-orange-300">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/portfolio" className="hover:text-orange-300">
+                    Our Projects
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-orange-300">
+                    Contact
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
@@ -117,9 +116,9 @@ const Footer = () => {
           {/* Right Section - CTA */}
           <div className="flex-1">
             <h3 className="font-semibold text-lg mb-4">STAY IN TOUCH</h3>
-            <button className="bg-blue-600 hover:bg-white text-white hover:text-blue-600 px-6 py-2 rounded-full transition duration-300">
+            <Link to={'/contact'} className="bg-blue-600 hover:bg-white text-white hover:text-blue-600 px-6 py-2 rounded-full transition duration-300">
               CONTACT US
-            </button>
+            </Link>
           </div>
         </div>
 

@@ -7,3 +7,15 @@
   align-items: start;
   padding: 0;
 }
+
+#contacts-banner::after {
+  content: "";
+  @apply absolute -bottom-14 -right-14 w-48 h-48 rounded-full bg-white/10;
+  
+}
+
+#contacts-banner::before {
+  content: "";
+  @apply absolute bottom-12 right-12 w-28 h-28 rounded-full bg-white/10;
+  
+}
