@@ -3,39 +3,47 @@ import { Field } from 'formik'
 import { Form } from 'react-router-dom'
 function FormControl({ children, className = '', ...props }) {
   return (
-    <div className={`${className} flex flex-col gap-3 w-full`} {...props}>
+    <div className={`${className} flex flex-col gap-1 w-full`} {...props}>
       {children}
     </div>
   )
 }
 
-FormControl.Label = function Label({ children, className = '', htmlFor, ...props }) {
+const Label = function Label({ children, className = '', htmlFor, ...props }) {
   return (
-    <label htmlFor={htmlFor} className={`text-neutral-500 text-sm ${className}`} {...props}>
+    <label htmlFor={htmlFor} className={`text-neutral-500 font-semibold max-w-max text-base ${className}`} {...props}>
       {children}
     </label>
   )
 }
 
-FormControl.Input = function Input({ className = '',type = 'text',id, ...props }) {
+const Input = function Input({ className = '', type = 'text', id, error = '', ...props }) {
   return (
-    <Field
-      id={id}
-      as="input"
-      type={type}
-      className={`p-3 border border-neutral-300 rounded-md focus:outline-none focus:border-primary ${className}`}
-      {...props}
-    />
+    <>
+      <Field
+        id={id}
+        name={id}
+        as="input"
+        type={type}
+        className={`input input-sm ${className} ${error ? 'border-red-500' : ''}`}
+        {...props}
+      />
+      {error && <p className='text-red-500 text-sm'>{error}</p>}
+    </>
   )
 }
 
-FormControl.Textarea = function Textarea({ className = '', ...props }) {
+const Textarea = function Textarea({ className = '', error = '', ...props }) {
   return (
-    <Field
-      as="textarea"
-      className={`p-3 border border-neutral-300 rounded-md focus:outline-none focus:border-primary ${className}`}
-      {...props}
-    />
+    <>
+      <Field
+        as="textarea"
+        className={`p-3 textarea ${className} ${error ? 'border-red-500' : ''}`}
+        {...props}
+      />
+      {error && <p className='text-red-500 text-sm'>{error}</p>}
+    </>
+
   )
 }
 
@@ -47,4 +55,6 @@ const FormRow = ({ children, className = '', ...props }) => {
   )
 }
 
-export { FormControl, FormRow }
+export default FormControl;
+
+export { Label, Input, Textarea, FormRow }

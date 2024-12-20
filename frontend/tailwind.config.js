@@ -7,7 +7,7 @@ export default {
       colors:{
         'primary-darker':'#0036D7',
         primary: {
-          DEFAULT: '#3F61FF',
+          DEFAULT: '#1045FA',
           "99": "#fefbff",
           "98": "#fbf8ff",
           "95": "#f0efff",
@@ -27,7 +27,7 @@ export default {
           "0": "#000000",
         },
         secondary: {
-          DEFAULT: '#005485',
+          DEFAULT: '#007ABF',
           "100": "#ffffff",
           "99": "#fcfcff",
           "98": "#f7f9ff",
@@ -77,10 +77,12 @@ export default {
     themes: [
       {
         light: {
-          'primary': '#3F61FF',
+          'primary': '#1045FA',
           'primary-content': '#fff',
-          'secondary': '#005485',
+          'secondary': '#007ABF',
+          'secondary-content': '#fff',
           'accent': '#FA8E18',
+          'error': '#F93154',
         },
       },
     ],
