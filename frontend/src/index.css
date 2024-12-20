@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .input{
+    @apply bg-transparent px-0 input-bordered;
+  }
+  .input-bordered{
+    @apply border-0 border-b-[1px] rounded-none border-neutral-500;
+  }
+  .input:focus {
+    @apply border-primary-35 outline-none;
+  }
+  .textarea:focus {
+    @apply border-primary-35 outline-none;
+  }
+  .alert-error {
+    @apply bg-red-300 text-red-900;
+  }
+}
+
+
 .hero-content {
   flex-direction: column;
   align-items: start;

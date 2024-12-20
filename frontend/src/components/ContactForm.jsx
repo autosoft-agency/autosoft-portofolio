@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik'
 import React, { useCallback } from 'react'
-import {FormControl, FormRow} from './UI/FormControl'
+import FormControl, { Label, Input, Textarea, FormRow } from './UI/FormControl'
 import * as Yup from 'yup';
 const validationScema = Yup.object().shape({
     firstname: Yup.string().required('Name is required'),
@@ -18,9 +18,38 @@ const initialValues = {
     subject: '',
     message: '',
 }
+
+const accessKey = import.meta.env.VITE_EMAIL_ACCESS_KEY
 function ContactForm() {
-    const handleSubmit = useCallback((values) => {
-        console.log(values)
+    const handleSubmit = useCallback(async (values, { resetForm, setSubmitting, setErrors, setStatus }) => {
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    access_key: accessKey,
+                    ...values,
+                }),
+            })
+            if (response.ok) {
+                resetForm()
+                setStatus('success')
+            } else {
+                const error = await response.json()
+                setErrors({ form: error })
+                setStatus('error')
+            }
+        } catch (error) {
+            setErrors({ form: error })
+            setStatus('error')
+        } finally {
+            setSubmitting(false)
+            setTimeout(() => {
+                setStatus(null)
+            }, 2000)
+        }
     }, [])
     return (
         <Formik
@@ -28,78 +57,99 @@ function ContactForm() {
             onSubmit={handleSubmit}
             validationSchema={validationScema}
         >
-            {({ errors, touched }) => (
-                <Form className='flex flex-col gap-4'>
-                    <FormRow>
+            {({ errors, touched, status, isSubmitting }) => (
+                <Form className='flex flex-col justify-between gap-3 h-full'>
+                    <div className='flex flex-col gap-6'>
+                        <FormRow className='!gap-6'>
+                            <FormControl>
+                                <Label htmlFor='firstname'>First Name</Label>
+                                <Input
+                                    id='firstname'
+                                    error={touched.firstname && errors.firstname}
+                                    name='firstname'
+                                    type='text'
+                                    placeholder='Your Name'
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <Label htmlFor='lastname'>Last Name</Label>
+                                <Input
+                                    id='lastname'
+                                    error={touched.lastname && errors.lastname}
+                                    name='lastname'
+                                    type='text'
+                                    placeholder='Your Name'
+                                />
+                            </FormControl>
+                        </FormRow>
+                        <FormRow className='!gap-6'>
+                            <FormControl>
+                                <Label htmlFor='email'>Email</Label>
+                                <Input
+                                    id='email'
+                                    name='email'
+                                    type='email'
+                                    error={touched.email && errors.email}
+                                    placeholder='Your Email'
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <Label htmlFor='phone'>Phone Number</Label>
+                                <Input
+                                    id='phone'
+                                    error={touched.phone && errors.phone}
+                                    name='phone'
+                                    type='text'
+                                    placeholder='Your Phone Number'
+                                />
+                            </FormControl>
+                        </FormRow>
                         <FormControl>
-                            <FormControl.Label htmlFor='firstname'>First Name</FormControl.Label>
-                            <FormControl.Input
-                                id='firstname'
-                                className={`${errors.firstname && touched.firstname ? 'border-red-500' : ''}`}
-                                name='firstname'
+                            <Label htmlFor='subject'>Subject</Label>
+                            <Input
+                                id='subject'
+                                name='subject'
                                 type='text'
-                                placeholder='Your Name'
+                                error={touched.subject && errors.subject}
+                                placeholder='Subject'
                             />
-                            {errors.firstname && touched.firstname && <p className='text-red-500 text-sm'>{errors.firstname}</p>}
                         </FormControl>
                         <FormControl>
-                            <FormControl.Label htmlFor='lastname'>Last Name</FormControl.Label>
-                            <FormControl.Input
-                                id='lastname'
-                                className={`${errors.lastname && touched.lastname ? 'border-red-500' : ''}`}
-                                name='lastname'
-                                type='text'
-                                placeholder='Your Name'
+                            <Label htmlFor='message'>Message</Label>
+                            <Textarea
+                                id='message'
+                                name='message'
+                                error={touched.message && errors.message}
+                                placeholder='Your Message'
                             />
-                            {errors.lastname && touched.lastname && <p className='text-red-500 text-sm'>{errors.lastname}</p>}
                         </FormControl>
-                    </FormRow>
-                    <FormRow>
-                        <FormControl>
-                            <FormControl.Label htmlFor='email'>Email</FormControl.Label>
-                            <FormControl.Input
-                                id='email'
-                                name='email'
-                                type='email'
-                                className={`${errors.email && touched.email ? 'border-red-500' : ''}`}
-                                placeholder='Your Email'
-                            />
-                            {errors.email && touched.email && <p className='text-red-500 text-sm'>{errors.email}</p>}
-                        </FormControl>
-                        <FormControl>
-                            <FormControl.Label htmlFor='phone'>Phone Number</FormControl.Label>
-                            <FormControl.Input
-                                id='phone'
-                                className={`${errors.phone && touched.phone ? 'border-red-500' : ''}`}
-                                name='phone'
-                                type='text'
-                                placeholder='Your Phone Number'
-                            />
-                            {errors.phone && touched.phone && <p className='text-red-500 text-sm'>{errors.phone}</p>}
-                        </FormControl>
-                    </FormRow>
-                    <FormControl>
-                        <FormControl.Label htmlFor='subject'>Subject</FormControl.Label>
-                        <FormControl.Input
-                            id='subject'
-                            name='subject'
-                            type='text'
-                            className={`${errors.subject && touched.subject ? 'border-red-500' : ''}`}
-                            placeholder='Subject'
-                        />
-                        {errors.subject && touched.subject && <p className='text-red-500 text-sm'>{errors.subject}</p>}
-                    </FormControl>
-                    <FormControl>
-                        <FormControl.Label htmlFor='message'>Message</FormControl.Label>
-                        <FormControl.Textarea
-                            id='message'
-                            name='message'
-                            className={`${errors.message && touched.message ? 'border-red-500' : ''}`}
-                            placeholder='Your Message'
-                        />
-                        {errors.message && touched.message && <p className='text-red-500 text-sm'>{errors.message}</p>}
-                    </FormControl>
-                    <button type='submit' className='btn btn-primary'>Send</button>
+                        {
+                            errors.form && status === 'error' &&
+                            (<div className='toast'>
+                                <div className='alert alert-error text-sm'>
+                                    {errors.form}
+                                </div>
+                            </div>)
+                        }
+                        {
+                            status === 'success' &&
+                            (<div className='toast'>
+                                <div className='alert alert-success text-sm'>
+                                    Message sent successfully
+                                </div>
+                            </div>)
+                        }
+                    </div>
+                    <button type='submit' className={`btn rounded-full btn-primary self-end disabled:cursor-not-allowed disabled:bg-gray-400 disabled:text-primary-content`} disabled={isSubmitting}>
+                        {isSubmitting ? (
+                            <>
+                            Sending {" "}
+                            <span className="loading loading-spinner"></span>
+                            </>
+                        ) : (
+                            "Send Message"
+                        )}
+                    </button>
                 </Form>
             )}
         </Formik>

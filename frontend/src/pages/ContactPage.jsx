@@ -16,7 +16,7 @@ const ContactPage = () => {
       <Body className='flex flex-col gap-12'>
         <h1 className='uppercase sm:text-4xl text-2xl font-bold bg-gradient-to-r from-sky-500 via-sky-300 via-60% to-sky-500 w-max bg-clip-text text-transparent'>Let's Contact</h1>
         <div className='sm:px-8'>
-          <div className='bg-slate-100 overflow-hidden rounded-lg flex max-lg:flex-col gap-4'>
+          <div className='bg-neutral-600/5 overflow-hidden rounded-2xl flex max-lg:flex-col gap-4'>
             <ContactsCard contacts={contacts} />
             <div className='flex-1 p-6'>
               <ContactForm />
