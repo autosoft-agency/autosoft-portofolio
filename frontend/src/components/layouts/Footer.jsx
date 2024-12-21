@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#001159] text-white overflow-hidden">
+    <footer className="relative bg-[#001159] text-white overflow-hidden isolate">
       {/* Background Shapes */}
       {/* <div className="absolute top-0 left-0 w-1/4 h-full bg-blue-800 rounded-r-full opacity-30 pointer-events-none"></div> */}
       {/* <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-700 rounded-l-full opacity-30 pointer-events-none"></div> */}
 
       <div 
-           className="absolute bg-cover bg-center w-full h-full" 
+           className="absolute bg-cover bg-center w-full h-full -z-10" 
            style={{ backgroundImage:` url(${MaskGroup}) `}}
       >
            <div className="absolute inset-0 pointer-events-none"></div>  

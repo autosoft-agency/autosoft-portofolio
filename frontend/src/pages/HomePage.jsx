@@ -12,11 +12,11 @@ const HomePage = () => {
            style={{ backgroundImage:` url(${backgroundImage}) `}}
         >
            <div className="absolute inset-0 bg-black/10 backdrop-blur-md pointer-events-none"></div>  
-           <Header />
+           {/* <Header /> */}
            <FloatingContainer />
         </div>
         <OurServices />
-        <Footer />
+        {/* <Footer /> */}
     </div>
   );
 };
