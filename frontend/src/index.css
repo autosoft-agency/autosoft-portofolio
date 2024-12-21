@@ -36,5 +36,4 @@
 #contacts-banner::before {
   content: "";
   @apply absolute bottom-12 right-12 w-28 h-28 rounded-full bg-white/10;
-  
 }
