@@ -38,11 +38,7 @@ const ServicesContent = () => {
   return (
     <section className="py-10">
       <div className="container mx-auto px-4">
-        {/* <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
-          Our Services
-        </h1> */}
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6"> */}
-        <div className="grid grid-cols gap-6">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
           {services.map((service) => (
             <div
               key={service.id}
@@ -51,7 +47,7 @@ const ServicesContent = () => {
               <img
                 src={service.imageSrc}
                 alt={service.title}
-                className="w-60 h-60 mx-auto mb-4"
+                className="h-60 mx-auto mb-4"
               />
               <h2 className="text-xl font-semibold text-gray-800 mb-2">
                 {service.title}
