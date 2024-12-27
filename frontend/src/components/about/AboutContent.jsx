@@ -1,4 +1,4 @@
-import WhoWe from "../../assets/who-We-are.png";
+import WhoWe from "../../assets/who-we-are.png";
 import Mission from "../../assets/our-mission.png";
 import Sameh from "../../assets/team-member-sameh.png";
 import Kassab from "../../assets/team-member-kassab.jpg";
