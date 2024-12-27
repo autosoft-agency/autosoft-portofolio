@@ -4,7 +4,7 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import OurProjectsPage from "./pages/OurProjectsPage";
 import ContactPage from "./pages/ContactPage";
-import Header from "./components/homepage/heroSection/Header";
+import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
 
 const App = () => {
