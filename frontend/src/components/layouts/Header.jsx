@@ -10,7 +10,7 @@ const Header = () => {
   const isInSize = useWidthBreakPoint(768); // Adjust the breakpoint as needed
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <header className="fixed w-full z-20 md:p-4 isolate">
+    <header className="fixed w-full z-20 md:p-2 isolate md:bg-secondary-10/70">
       <AnimatePresence>
         {(!isInSize || isMenuOpen) && <motion.nav
         initial={{ opacity: 0, translateY: "-100px" }}
