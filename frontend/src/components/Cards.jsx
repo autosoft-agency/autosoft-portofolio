@@ -16,7 +16,7 @@ function Cards({ currentCards }) {
                 className="size-full transform transition-transform duration-500 group-hover:scale-105"
               />
             </figure>
-            <div className="card-body  border rounded-2xl opacity-0 group-hover:opacity-100  transition-opacity duration-1000  bg-black bg-opacity-60 !text-white font-bold">
+            <div className="card-body  border rounded-2xl opacity-0 group-hover:opacity-100  transform transition-opacity duration-1000  bg-black bg-opacity-60 !text-white font-bold">
               <h2 className="card-title font-semibold m-auto text-3xl">
                 {card.title}
               </h2>

@@ -32,7 +32,7 @@ export default function OurProjects() {
   const clonedProjectsSlides = [
     { image: `${cloneProject1}` },
     { image: `${cloneProject2}` },
-    { image: `${cloneProject5}` },
+    { image: `${cloneProject5}`, link: "https://vimeo.com/1030207965" },
     { image: `${cloneProject3}` },
     { image: `${cloneProject4}` },
   ];
