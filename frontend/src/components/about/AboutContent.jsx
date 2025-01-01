@@ -1,4 +1,5 @@
-import WhoWe from "../../assets/who-we-are.png";
+import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import WhoWe from "../../assets/who-We-are.png";
 import Mission from "../../assets/our-mission.png";
 import Sameh from "../../assets/team-member-sameh.png";
 import Kassab from "../../assets/team-member-kassab.jpg";
@@ -8,8 +9,7 @@ const AboutContent = () => {
     {
       name: "Mahmoud Sameh",
       role: "Full Stack Developer",
-      // imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
-      imgSrc: Sameh, // Replace with actual image URL
+      imgSrc: Sameh,
       linkedin: "#",
       github: "#",
     },
@@ -21,18 +21,17 @@ const AboutContent = () => {
       github: "#",
     },
     {
-      name: "Nada",
+      name: "Nada Maher",
       role: "Full Stack Developer",
       // imgSrc: Sameh,
       imgSrc: "https://via.placeholder.com/150",
       linkedin: "#",
       github: "#",
     },
-    // Add more team members as needed
   ];
 
   return (
-    <div className="bg-gray-50 text-gray-800 p-20">
+    <div className="bg-gray-50 text-gray-800 p-10">
 
       {/* Who We Are Section */}
       <section className="container mx-auto py-16 px-4">
@@ -52,24 +51,6 @@ const AboutContent = () => {
           />
         </div>
       </section>
-
-      {/* <section className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl font-bold text-blue-900 mb-8">Our Mission</h2>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <p className="text-lg leading-relaxed">
-              Our mission is to empower businesses and individuals by delivering cutting-edge
-              digital solutions that bridge the gap between innovation and functionality. We strive
-              to create meaningful, tailor-made websites and applications that not only meet our
-              clients`&apos;` needs but also inspire and engage their audiences.
-          </p>
-          <img
-            // src="https://via.placeholder.com/400"
-            src={Mission}
-            alt="Who We Are"
-            className="rounded-lg shadow-lg"
-          />
-        </div>
-      </section> */}
 
       {/* Our Mission Section */}
       <section className=" py-16">
@@ -92,59 +73,23 @@ const AboutContent = () => {
       </section>
 
       {/* Team Members Section */}
-      {/* <section className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl font-bold text-blue-900 mb-8">Team Members</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden text-center p-6"
-            >
-              <img
-                src={member.imgSrc}
-                alt={member.name}
-                className="w-32 h-32 rounded-full mx-auto mb-4"
-              />
-              <h3 className="text-xl font-semibold">{member.name}</h3>
-              <p className="text-blue-500 mb-4">{member.role}</p>
-              <div className="flex justify-center gap-4">
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-900"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href={member.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-gray-900"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section> */}
-      <section className="container mx-auto py-16 px-4">
+        <section className="container mx-auto py-16 px-4">
   <h2 className="text-3xl font-bold text-blue-900 mb-8">Team Members</h2>
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+  <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {teamMembers.map((member, index) => (
       <div
         key={index}
         className="relative bg-white rounded-lg shadow-lg overflow-hidden"
       >
-        {/*team images*/}
+        {/* Team Image */}
         <img
           src={member.imgSrc}
           alt={member.name}
           className="w-full h-full object-cover"
         />
-        {/* team details */}
-        <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-4">
+
+        {/* Team Details */}
+        <div className="absolute bottom-4 left-4 right-4 bg-white bg-opacity-90 p-4 rounded-lg shadow-md">
           <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
           <p className="text-blue-500">{member.role}</p>
           <div className="flex gap-4 mt-2">
@@ -152,25 +97,26 @@ const AboutContent = () => {
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-700 hover:text-blue-900"
+              className="text-blue-700 hover:text-blue-900 text-2xl"
             >
-              LinkedIn
+              <FaLinkedinIn />
             </a>
             <a
               href={member.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 hover:text-gray-900"
+              className="text-gray-700 hover:text-gray-900 text-2xl"
             >
-              GitHub
+              {/* <FaGithub /> */}
+              <FaFacebookF />
             </a>
             <a
-              href={member.linkedin}
+              href={member.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-700 hover:text-blue-900"
+              className="text-green-500 hover:text-green-700 text-2xl"
             >
-              Whatsapp
+              <FaWhatsapp />
             </a>
           </div>
         </div>
