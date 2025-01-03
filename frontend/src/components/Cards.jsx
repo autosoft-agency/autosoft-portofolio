@@ -3,11 +3,11 @@ import React from "react";
 function Cards({ currentCards }) {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <div className="flex justify-center  flex-col lg:flex-row md:flex-wrap md:justify-start gap-4 ">
         {currentCards.map((card) => (
           <div
             key={card.id}
-            className="card  relative col-span-1  shadow-xl group md:w-[450px] md:h-[250px] "
+            className="card  relative col-span-1  shadow-xl group max-w-[600px] max-h-[400px] min-w-[450px] min-h-[250px]  "
           >
             <figure className=" absolute top-0 left-0 size-full border rounded-2xl  transform transition-transform duration-400 ease-in-out overflow-hidden">
               <img
