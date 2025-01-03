@@ -22,17 +22,17 @@ import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 
 export default function OurProjects() {
   const templatesSlides = [
-    { image: `${project1}`, link: "https://game-worrier.vercel.app/" },
+    { image: `${project1}`, link: "https://diamond-games.onrender.com/" },
     { image: `${project2}`, link: "https://autonet.netlify.app/" },
-    { image: `${project4}`, link: " https://movies-clone.onrender.com/" },
+    { image: `${project4}`, link: "https://moviessimplewebsite.netlify.app/" },
     { image: `${project3}`, link: "https://gem-gym.onrender.com/" },
-    { image: `${project5}`, link: "https://tradex.onrender.com/" },
+    { image: `${project5}`, link: "https://nadamaher74.github.io/Tradex/" },
   ];
 
   const clonedProjectsSlides = [
     { image: `${cloneProject1}` },
     { image: `${cloneProject2}` },
-    { image: `${cloneProject5}` },
+    { image: `${cloneProject5}`, link: "https://vimeo.com/1030207965" },
     { image: `${cloneProject3}` },
     { image: `${cloneProject4}` },
   ];
@@ -100,14 +100,17 @@ export default function OurProjects() {
           clickable: true,
         }}
         modules={[EffectCoverflow, Navigation, Pagination]}
-        className="!w-full !p-0 !my-12"
+        className="!w-full  !my-12"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={index} className="!max-w-[400px]  !h-[400px] !mt-0">
+          <SwiperSlide
+            key={index}
+            className="!min-w-[300px] !max-w-[500px]  !h-[400px] !mt-0 !p-6 !overflow-hidden"
+          >
             <img
               src={slide.image}
               alt={`Slide ${index + 1}`}
-              className="!w-full !h-[330px] !border !rounded-xl"
+              className="!object-cover !h-[300px]  !border !rounded-xl "
               onClick={() => window.open(slide.link, "_blank")}
             />
           </SwiperSlide>
