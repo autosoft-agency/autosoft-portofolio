@@ -3,6 +3,7 @@ import WhoWe from "../../assets/who-we-are.png";
 import Mission from "../../assets/our-mission.png";
 import Sameh from "../../assets/team-member-sameh.png";
 import Kassab from "../../assets/team-member-kassab.jpg";
+import logo from "../../assets/logo2.jpeg";
 
 const AboutContent = () => {
   const teamMembers = [
@@ -22,9 +23,8 @@ const AboutContent = () => {
     },
     {
       name: "Nada Maher",
-      role: "Full Stack Developer",
-      // imgSrc: Sameh,
-      imgSrc: "https://via.placeholder.com/150",
+      role: "Frontend Developer",
+      imgSrc: logo,
       linkedin: "#",
       github: "#",
     },
@@ -32,7 +32,6 @@ const AboutContent = () => {
 
   return (
     <div className="bg-gray-50 text-gray-800 p-10">
-
       {/* Who We Are Section */}
       <section className="container mx-auto py-16 px-4">
         <h2 className="text-3xl font-bold text-blue-900 mb-8">Who We Are</h2>
@@ -75,57 +74,103 @@ const AboutContent = () => {
       </section>
 
       {/* Team Members Section */}
-        <section className="container mx-auto py-16 px-4">
-  <h2 className="text-3xl font-bold text-blue-900 mb-8">Team Members</h2>
-  <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {teamMembers.map((member, index) => (
-      <div
-        key={index}
-        className="relative bg-white rounded-lg shadow-lg overflow-hidden"
-      >
-        {/* Team Image */}
-        <img
-          src={member.imgSrc}
-          alt={member.name}
-          className="w-full h-full object-cover"
-        />
+      <section className="container mx-auto py-16 px-4">
+        <h2 className="text-3xl font-bold text-blue-900 mb-8">Team Members</h2>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {teamMembers.map((member, index) => (
+            // <div
+            //   key={index}
+            //   className="relative bg-white rounded-lg shadow-lg overflow-hidden"
+            // >
+            //   {/* Team Image */}
+            //   <img
+            //     src={member.imgSrc}
+            //     alt={member.name}
+            //     className="w-full h-full object-cover"
+            //   />
 
-        {/* Team Details */}
-        <div className="absolute bottom-4 left-4 right-4 bg-white bg-opacity-90 p-4 rounded-lg shadow-md">
-          <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
-          <p className="text-blue-500">{member.role}</p>
-          <div className="flex gap-4 mt-2">
-            <a
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-700 hover:text-blue-900 text-2xl"
+            //   {/* Team Details */}
+            //   <div className="absolute bottom-4 left-4 right-4 bg-white bg-opacity-90 p-4 rounded-lg shadow-md">
+            //     <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
+            //     <p className="text-blue-500">{member.role}</p>
+            //     <div className="flex gap-4 mt-2">
+            //       <a
+            //         href={member.linkedin}
+            //         target="_blank"
+            //         rel="noopener noreferrer"
+            //         className="text-blue-700 hover:text-blue-900 text-2xl"
+            //       >
+            //         <FaLinkedinIn />
+            //       </a>
+            //       <a
+            //         href={member.github}
+            //         target="_blank"
+            //         rel="noopener noreferrer"
+            //         className="text-gray-700 hover:text-gray-900 text-2xl"
+            //       >
+            //         {/* <FaGithub /> */}
+            //         <FaFacebookF />
+            //       </a>
+            //       <a
+            //         href={member.whatsapp}
+            //         target="_blank"
+            //         rel="noopener noreferrer"
+            //         className="text-green-500 hover:text-green-700 text-2xl"
+            //       >
+            //         <FaWhatsapp />
+            //       </a>
+            //     </div>
+            //   </div>
+            // </div>
+
+            <div
+              key={index}
+              className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
-              <FaLinkedinIn />
-            </a>
-            <a
-              href={member.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-700 hover:text-gray-900 text-2xl"
-            >
-              {/* <FaGithub /> */}
-              <FaFacebookF />
-            </a>
-            <a
-              href={member.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-green-500 hover:text-green-700 text-2xl"
-            >
-              <FaWhatsapp />
-            </a>
-          </div>
+              <div className="flex flex-col items-center p-10">
+                <img
+                  className="w-40 h-40 mb-3 rounded-full shadow-lg"
+                  src={member.imgSrc}
+                  alt={member.name}
+                />
+                <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                  {member.name}
+                </h5>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  {member.role}
+                </span>
+                <div className="flex mt-4 md:mt-6 gap-4">
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-700 hover:text-blue-900 text-2xl"
+                  >
+                    <FaLinkedinIn />
+                  </a>
+                  <a
+                    href={member.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:text-gray-900 text-2xl"
+                  >
+                    {/* <FaGithub /> */}
+                    <FaFacebookF />
+                  </a>
+                  <a
+                    href={member.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-500 hover:text-green-700 text-2xl"
+                  >
+                    <FaWhatsapp />
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    ))}
-  </div>
-</section>
+      </section>
     </div>
   );
 };
