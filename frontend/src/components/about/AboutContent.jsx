@@ -1,5 +1,5 @@
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import WhoWe from "../../assets/who-We-are.png";
+import WhoWe from "../../assets/who-we-are.png";
 import Mission from "../../assets/our-mission.png";
 import Sameh from "../../assets/team-member-sameh.png";
 import Kassab from "../../assets/team-member-kassab.jpg";
@@ -38,10 +38,11 @@ const AboutContent = () => {
         <h2 className="text-3xl font-bold text-blue-900 mb-8">Who We Are</h2>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <p className="text-lg leading-relaxed">
-            Our journey is fueled by a deep commitment to excellence and a vision to empower
-            businesses and individuals in the ever-evolving digital landscape. From startups and
-            small businesses to established enterprises, we take pride in creating tailored
-            solutions that drive growth, enhance engagement, and bring visions to life.
+            Our journey is fueled by a deep commitment to excellence and a
+            vision to empower businesses and individuals in the ever-evolving
+            digital landscape. From startups and small businesses to established
+            enterprises, we take pride in creating tailored solutions that drive
+            growth, enhance engagement, and bring visions to life.
           </p>
           <img
             // src="https://via.placeholder.com/400"
@@ -63,9 +64,10 @@ const AboutContent = () => {
               className="rounded-lg shadow-lg"
             />
             <p className="text-lg leading-relaxed">
-              Our mission is to empower businesses and individuals by delivering cutting-edge
-              digital solutions that bridge the gap between innovation and functionality. We strive
-              to create meaningful, tailor-made websites and applications that not only meet our
+              Our mission is to empower businesses and individuals by delivering
+              cutting-edge digital solutions that bridge the gap between
+              innovation and functionality. We strive to create meaningful,
+              tailor-made websites and applications that not only meet our
               clients`&apos;` needs but also inspire and engage their audiences.
             </p>
           </div>

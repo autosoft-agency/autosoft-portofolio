@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa"; // menu & close icons
 import logo from "../../assets/logo.png";
 import SocialIcons from "../homepage/heroSection/SocialIcons";
@@ -6,66 +6,88 @@ import useWidthBreakPoint from "../../Hooks/use-widthBreakPoint";
 import NvLink from "../UI/NavLink";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
+
 const Header = () => {
   const isInSize = useWidthBreakPoint(768); // Adjust the breakpoint as needed
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  return (
-    <header className="fixed w-full z-20 md:p-2 isolate md:bg-secondary-10/70">
-      <AnimatePresence>
-        {(!isInSize || isMenuOpen) && <motion.nav
-        initial={{ opacity: 0, translateY: "-100px" }}
-        animate={{ opacity: 1, translateY: 0 }}
-        exit={{ opacity: 0, translateY: "-100px" }}
-        className="flex z-10 max-md:bg-primary-5/50 max-md:gap-2 max-md:absolute max-md:top-0 max-md:left-0 max-md:right-0 w-full max-md:flex-col justify-between items-center text-white">
-          <div className="max-md:p-2 max-md:w-full flex max-md:justify-between">
-            <Link to="/" className="inline-block"><img src={logo} alt="AutoSoft Logo" className="h-12 w-auto" /></Link>
-            <div>
-              <button className="btn btn-ghost btn-circle text-accent-60 md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}><FaTimes size={25} /></button>
-            </div>
-          </div>
+  const [isScrolled, setIsScrolled] = useState(false);
 
-          {/* Navigation Links - Hidden on small screens */}
-          <ul className="flex md:gap-4 max-md:flex-col max-md:w-full">
-            <NvLink to="/">
-              Home
-            </NvLink>
-            <NvLink to="/about">
-              About
-            </NvLink>
-            <NvLink to="/services">
-              Services
-            </NvLink>
-            <NvLink to="/portfolio">
-              Our Projects
-            </NvLink>
-            <NvLink to="/contact">
-              Contact
-            </NvLink>
-          </ul>
-          {/* Social Icons - Hidden on small screens */}
-          <div className="p-4">
-            <SocialIcons />
-          </div>
-        </motion.nav>}
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 50);
+  };
+
+  window.onscroll = handleScroll;
+
+  return (
+    <header
+      className={`fixed w-full z-20 md:p-2 isolate transition-all duration-300 ${
+        isScrolled ? "bg-secondary-10/90 backdrop-blur-md" : "bg-transparent"
+      }`}
+    >
+      <AnimatePresence>
+        {(!isInSize || isMenuOpen) && (
+          <motion.nav
+            initial={{ opacity: 0, translateY: "-100px" }}
+            animate={{ opacity: 1, translateY: 0 }}
+            exit={{ opacity: 0, translateY: "-100px" }}
+            className="flex z-10 max-md:bg-primary-5/50 max-md:gap-2 max-md:absolute max-md:top-0 max-md:left-0 max-md:right-0 w-full max-md:flex-col justify-between items-center text-white"
+          >
+            <div className="max-md:p-2 max-md:w-full flex max-md:justify-between">
+              <Link to="/" className="inline-block">
+                <img src={logo} alt="AutoSoft Logo" className="h-12 w-auto" />
+              </Link>
+              <div>
+                <button
+                  className="btn btn-ghost btn-circle text-accent-60 md:hidden"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                  <FaTimes size={25} />
+                </button>
+              </div>
+            </div>
+
+            {/* Navigation Links - Hidden on small screens */}
+            <ul className="flex md:gap-4 max-md:flex-col max-md:w-full">
+              <NvLink to="/">Home</NvLink>
+              <NvLink to="/about">About</NvLink>
+              <NvLink to="/services">Services</NvLink>
+              <NvLink to="/portfolio">Our Projects</NvLink>
+              <NvLink to="/contact">Contact</NvLink>
+            </ul>
+            {/* Social Icons - Hidden on small screens */}
+            <div className="p-4">
+              <SocialIcons />
+            </div>
+          </motion.nav>
+        )}
       </AnimatePresence>
-      {isMenuOpen && <div
-        className="fixed inset-0 bg-black/30 backdrop-blur-md"
-        onClick={() => setIsMenuOpen(false)}
-      ></div>}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 backdrop-blur-md"
+          onClick={() => setIsMenuOpen(false)}
+        ></div>
+      )}
 
       {/* Menu Icon for Small Screens */}
-      {!isMenuOpen && <div className="md:hidden p-2 flex justify-between">
-        <Link to="/" className="inline-block"><img src={logo} alt="AutoSoft Logo" className="h-12 w-auto" /></Link>
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-2xl btn bg-transparent border-0 outline-none hover:bg-secondary-20/50 btn-circle text-accent">
-          <FaBars />
-        </button>
-      </div>}
-      {/* Dropdown Menu - Visible on small screens */}
+      {!isMenuOpen && (
+        <div className="md:hidden p-2 flex justify-between">
+          <Link to="/" className="inline-block">
+            <img src={logo} alt="AutoSoft Logo" className="h-12 w-auto" />
+          </Link>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-2xl btn bg-transparent border-0 outline-none hover:bg-secondary-20/50 btn-circle text-accent"
+          >
+            <FaBars />
+          </button>
+        </div>
+      )}
     </header>
   );
 };
 
 export default Header;
+
 // {isMenuOpen && (
 //   <div>
 //     {/* Overlay with Blur Effect */}

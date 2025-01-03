@@ -64,6 +64,7 @@ const OurProjectsPage = () => {
       id: 3,
       title: "Travello",
       imageUrl: `${cloneProject5}`,
+      link: "https://vimeo.com/1030207965",
     },
     { id: 4, title: "Threads", imageUrl: `${cloneProject3}` },
     {
